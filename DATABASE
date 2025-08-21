@@ -1,0 +1,9 @@
+-- Create the 'market_data' table
+CREATE TABLE market_data (
+    data_id SERIAL PRIMARY KEY,
+    asset_id INT NOT NULL REFERENCES assets(asset_id),
+    data_date DATE NOT NULL,
+    closing_price NUMERIC(15, 2) NOT NULL,
+    UNIQUE (asset_id, data_date) -- Ensures only one data point per asset per day
+);
+
